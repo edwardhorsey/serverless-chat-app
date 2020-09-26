@@ -1,0 +1,11 @@
+.SetName {
+  background-color: darkkhaki;
+  border-radius: 20px;
+  padding: 5px 0px 10px 0px;
+  margin: 10%;
+  .formErrors {
+    font-size: 0.8rem;
+    color: darkred;
+    text-align: center;
+  }
+}
