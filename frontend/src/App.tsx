@@ -7,7 +7,6 @@ import { ChatContext } from './context/chatContext';
 function App() {
   const context = useContext(ChatContext);
   const { name, setContext } = context;
-  console.log(context);
   const setName = (value: string) => { setContext({...context, name: value}) }
 
   return (
