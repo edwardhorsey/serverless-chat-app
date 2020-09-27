@@ -1,17 +1,26 @@
 import React, { createContext, useState, Dispatch, SetStateAction, ReactChild } from 'react';
+import { isContext } from 'vm';
 import { socket } from '../socket/socket';
 
 interface iProps {
   children: ReactChild
 }
 
+export interface Ichat {
+  action: string,
+  name: string,
+  message: string
+}
+
 interface Icontext {
   name: string,
+  chatMessages: Ichat[],
   setContext: Dispatch<SetStateAction<Icontext>>
 }
 
 const initialState: Icontext = {
   name: '',
+  chatMessages: [],
   setContext: ()=>{}
 }
 
@@ -19,6 +28,17 @@ export const ChatContext = createContext<Icontext>(initialState)
 
 export const ChatProvider = (props: iProps) => {
   const [state, setContext] = useState(initialState)
+
+  socket.onmessage = (event) => {
+    const response = JSON.parse(event.data);
+    console.log(response);
+
+    if (response['type'] === 'chatMessage') {
+      console.log(state, 'hi')
+      const chatMessages = [...state.chatMessages, response];
+      setContext({...state, chatMessages });
+    }
+  }
 
   return <ChatContext.Provider value={{...state, setContext}}>{props.children}</ChatContext.Provider>
 };

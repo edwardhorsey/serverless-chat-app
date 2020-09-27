@@ -1,8 +1,14 @@
 .SetName {
   background-color: darkkhaki;
   border-radius: 20px;
-  padding: 5px 0px 10px 0px;
-  margin: 10%;
+  padding: 10px 0px 10px 0px;
+  width: 280px;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 400px;
+  }
   .formErrors {
     font-size: 0.8rem;
     color: darkred;

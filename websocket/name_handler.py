@@ -6,8 +6,9 @@ dynamodb = boto3.client('dynamodb')
 
 
 def handle(event, context):
-    response = json.loads(event['body'])['message']
-
+    response = json.loads(event['body'])['name']
+    response['type'] = 'chatMessage'
+    
     paginator = dynamodb.get_paginator('scan')
     
     connectionIds = []
@@ -19,10 +20,12 @@ def handle(event, context):
     for page in paginator.paginate(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME']):
         connectionIds.extend(page['Items'])
 
+    response = request + ' has joined the chat'
+
     # Emit the recieved message to all the connected devices
     for connectionId in connectionIds:
         apigatewaymanagementapi.post_to_connection(
-            Data=json.dumps(response),
+            Data=response,
             ConnectionId=connectionId['connectionId']['S']
         )
 
