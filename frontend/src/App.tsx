@@ -3,11 +3,16 @@ import styles from './App.module.scss';
 import SetName from './component/SetName';
 import ChatRoom from './component/ChatRoom';
 import { ChatContext } from './context/chatContext';
+import { socket } from './socket/socket';
 
-function App() {
+const App = () => {
   const context = useContext(ChatContext);
   const { name, setContext } = context;
-  const setName = (value: string) => { setContext({...context, name: value}) }
+  const setName = (name: string) => {
+    setContext({...context, name });
+    // const request = { action: 'nameChange', name };
+    // socket.send(JSON.stringify(request));
+  };
 
   return (
     <div className={styles.App}>

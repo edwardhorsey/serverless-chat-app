@@ -1,47 +1,57 @@
 import React, { useContext } from "react";
 import styles from "./ChatRoom.module.scss";
-import { useFormik, FormikErrors } from 'formik';
+import { useFormik, FormikErrors, Formik } from 'formik';
 import Button from "../Button";
-import { isContext } from "vm";
 import { ChatContext } from "../../context/chatContext";
+import { socket } from "../../socket/socket";
+import ChatWindow from "../ChatWindow";
 
 interface Ivalues {
-  name: string;
+  message: string;
 }
 
 interface IProps {
-  // setName: (name: string) => void
 }
 
-// const validate = (values: Ivalues) => {
-//   let errors: FormikErrors<Ivalues> = { };
-//   if (!values.name) errors.name = "Required" 
-//   return errors
-// };
+const validate = (values: Ivalues) => {
+  let errors: FormikErrors<Ivalues> = { };
+  if (!values.message) errors.message = "Required" 
+  return errors
+};
 
-const ChatRoom: React.FC<IProps> = (props) => {
+const ChatRoom: React.FC<IProps> = () => {
 
   const context = useContext(ChatContext);
-  const { name, setContext } = context;
+  const { name, setContext, chatMessages } = context;
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: "",
-  //   },
-  //   validate,
-  //   onSubmit: values => props.setName(values.name)
-  // });
+  const sendMessage = (text: string) => {
+    const request = { "action": "onMessage", "message": { name, message: text } };
+    console.log('sending', request)
+    socket.send(JSON.stringify(request));
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      message: "",
+    },
+    validate,
+    onSubmit: values => {
+      sendMessage(values.message);
+      formik.resetForm();
+    }
+  });
 
   return (
     <section className={styles.ChatRoom}>
       <Button logic={() => setContext({...context, name: ''})} text="Back" />
-        {/* <form>
-          <label htmlFor="name"><h1>Set your display name</h1></label>
-          <input name="name" placeholder="Your name" onChange={formik.handleChange} />
-          <Button logic={formik.handleSubmit} text="Set name" />
-          {formik.errors.name ? <div className={styles.formErrors}>{formik.errors.name}</div> : ''}
-        </form> */}
-      <h2>{name}</h2>
+      <h3>{name}</h3>
+      <ChatWindow chat={chatMessages}/>
+      <form>
+        <input name="message" value={formik.values.message} onChange={formik.handleChange} />
+        <Button logic={formik.handleSubmit} text="Send" />
+        {formik.errors.message ? <div className={styles.formErrors}>{formik.errors.message}</div> : ''}
+      </form>
+      
     </section>
   );
 };

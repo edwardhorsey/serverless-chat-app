@@ -30,7 +30,7 @@ const SetName: React.FC<IProps> = (props) => {
   return (
     <section className={styles.SetName}>
         <form>
-          <label htmlFor="name"><h1>Set your display name</h1></label>
+          <label htmlFor="name">What's your name?</label>
           <input name="name" placeholder="Your name" onChange={formik.handleChange} />
           <Button logic={formik.handleSubmit} text="Set name" />
           {formik.errors.name ? <div className={styles.formErrors}>{formik.errors.name}</div> : ''}
