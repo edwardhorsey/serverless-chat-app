@@ -4,6 +4,7 @@ import SetName from './component/SetName';
 import ChatRoom from './component/ChatRoom';
 import { ChatContext } from './context/chatContext';
 import { socket } from './socket/socket';
+import ConnectedStatus from './component/ConnectedStatus';
 
 const App = () => {
   const context = useContext(ChatContext);
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <div className={styles.App}>
       {!name ? <SetName setName={setName}/> : <ChatRoom />}
-      <p>-= CONNECTED OR NOT COMPONENT GOES HERE =-</p>
+      <ConnectedStatus />
     </div>
   );
 }
