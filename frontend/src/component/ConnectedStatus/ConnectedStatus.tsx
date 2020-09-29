@@ -12,6 +12,7 @@ const ConnectedStatus: React.FC<IProps> = () => {
   return (
     <section className={styles.ConnectedStatus}>
       <div className={circleStyle}></div>
+      <p>{status}</p>
     </section>
   );
 };

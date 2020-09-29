@@ -16,10 +16,10 @@ const App = () => {
   };
 
   return (
-    <div className={styles.App}>
+    <main className={styles.App}>
       {!name ? <SetName setName={setName}/> : <ChatRoom />}
       <ConnectedStatus />
-    </div>
+    </main>
   );
 }
 

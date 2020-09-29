@@ -43,8 +43,10 @@ const ChatRoom: React.FC<IProps> = () => {
 
   return (
     <section className={styles.ChatRoom}>
-      <Button logic={() => setContext({...context, name: ''})} text="Back" />
-      <h3>{name}</h3>
+      <div className={styles.chatNav}>
+        <Button logic={() => setContext({...context, name: ''})} text="Back" />
+        <h3>{name}</h3>
+      </div>
       <ChatWindow chat={chatMessages}/>
       <form>
         <input name="message" value={formik.values.message} onChange={formik.handleChange} />

@@ -2,5 +2,10 @@
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
-  background-color: antiquewhite;
+  background-color: rgba(173, 216, 230, 0.5);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 1px black;
+  padding: 10px;
 }

@@ -1,8 +1,9 @@
 .ChatWindow {
-  border: 5px solid brown;
+  border: 3px solid rgba(109, 41, 41, 0.596);
   padding: 10px;
   min-height: 400px;
   overflow-y: scroll;
+  box-shadow: 1px 1px 1px black;
   margin: 10px;
   p{
     font-size: 0.9rem;
