@@ -1,12 +1,14 @@
+@import "../../variables.module.scss";
+
 .ChatRoom {
-  box-shadow: 1px 1px 1px black;
-  background-color: rgba(59, 53, 63, 0.1);
+  box-shadow: 1px 1px 1px $primaryblack;
+  background-color: $darkgreytransparent;
   width: 100%;
   margin-bottom: 10px;
   input {
-    background-color: rgba(255, 255, 240, 0.9);
+    background-color: $primaryyellow;
     padding: 10px;
-    border: 2px solid grey;
+    border: 2px solid $greygreenborder;
     outline: none;
     width: 50%;
     font-size: 1.1em;
@@ -16,8 +18,10 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20px 0 20px;
-    button {
-      background-color: none;
+    .backButton {
+      margin: auto 0;
+      font-size: 1.8em;
+      transform: rotateY(180deg);
     }
   }
 }

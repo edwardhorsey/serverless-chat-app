@@ -1,14 +1,17 @@
+@import "../../variables.module.scss";
+
 .ConnectedStatus {
-  border: 2px solid rgba(47, 79, 79, 0.7);
+  border: 2px solid $greygreenborder;
+  background-color: $darkgreytransparent;
   padding: 5px 15px 5px 15px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 1px $primaryblack;
   .circle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid $greygreenborder;
     margin: auto 0;
   }
   .connected {

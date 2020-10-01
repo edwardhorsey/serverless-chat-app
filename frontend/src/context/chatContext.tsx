@@ -1,5 +1,4 @@
 import React, { createContext, useState, Dispatch, SetStateAction, ReactChild } from 'react';
-import { isContext } from 'vm';
 import { socket } from '../socket/socket';
 
 interface iProps {
@@ -51,7 +50,6 @@ export const ChatProvider = (props: iProps) => {
     console.log(response);
 
     if (response['type'] === 'chatMessage') {
-      console.log(state, 'hi')
       const chatMessages = [...state.chatMessages, response];
       setContext({...state, chatMessages });
     }

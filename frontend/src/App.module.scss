@@ -1,11 +1,14 @@
+@import "./variables.module.scss";
+
 .App {
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
-  background-color: rgba(173, 216, 230, 0.5);
+  background-color: $primaryblue;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: $primaryblack;
+  color: $primaryblack;
   padding: 10px;
 }

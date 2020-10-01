@@ -1,5 +1,8 @@
+@import "../../variables.module.scss";
+
 .ChatWindow {
-  border: 3px solid rgba(109, 41, 41, 0.596);
+  border: 3px solid $marroonborder;
+  background-image: url(../../img/background.jpg);
   padding: 10px;
   min-height: 400px;
   overflow-y: scroll;
@@ -8,6 +11,7 @@
     font-size: 0.9rem;
     .name {
       font-weight: 600;
+      color: $secondaryblack;
     }
   };
 }
