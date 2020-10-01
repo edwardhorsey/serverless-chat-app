@@ -6,12 +6,8 @@
   padding: 10px;
   min-height: 400px;
   overflow-y: scroll;
-  margin: 10px;
-  p{
-    font-size: 0.9rem;
-    .name {
-      font-weight: 600;
-      color: $secondaryblack;
-    }
-  };
+  margin: 0 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }

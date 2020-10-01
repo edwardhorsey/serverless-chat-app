@@ -1,2 +1,2 @@
-import Button from "./Button";
-export default Button;
+import Message from "./Message";
+export default Message;

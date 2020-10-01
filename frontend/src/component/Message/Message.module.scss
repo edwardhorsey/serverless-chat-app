@@ -1,0 +1,21 @@
+@import "../../variables.module.scss";
+
+.Message {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: flex-end;
+  p {
+    background-color: $lightgrey;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+    .name {
+      font-weight: 600;
+      color: $secondaryblack;
+    }
+  }
+}
+
+.yourself {
+  justify-content: flex-start;
+}

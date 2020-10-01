@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './Button';
+import Message from './Message';
 
-describe("Leaderboard tests", () => {
+describe("Message tests", () => {
   let component: any;
   let mockFn;
 
   beforeEach(() => {
     mockFn = jest.fn();
-    component = shallow(<Button logic={()=>{console.log('test')}} text={'testing'} />);
+    component = shallow(<Message text={'testing'} />);
   })
   
   it("should render", () => {
