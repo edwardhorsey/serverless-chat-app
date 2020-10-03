@@ -6,8 +6,14 @@ dynamodb = boto3.client('dynamodb')
 
 
 def handle(event, context):
-    response = json.loads(event['body'])['message']
-
+    message = json.loads(event['body'])['message']
+    response = {
+        'action': 'onMessage',
+        'message': {
+            'message-type': 'chat',
+            'message': message
+        }
+    }
     paginator = dynamodb.get_paginator('scan')
     
     connectionIds = []

@@ -4,13 +4,21 @@ import { Ichat } from "../../context/chatContext";
 import Message from "../Message";
 
 interface IProps {
-  chat: Ichat[]
+  chat: Ichat[];
 }
 
-const ChatWindow: React.FC<IProps> = ({chat}) => {
+const ChatWindow: React.FC<IProps> = ({ chat }) => {
   return (
     <section className={styles.ChatWindow}>
-      {chat.map((item, index) => <Message key={index} yourself={true} name={item['name']} message={item['message']} />)}
+      {chat.map((item, index) => (
+        <Message
+          type={item["message-type"]}
+          key={index}
+          yourself={true}
+          name={item["message"]["name"]}
+          message={item["message"]["message"]}
+        />
+      ))}
     </section>
   );
 };

@@ -1,63 +1,72 @@
 import React, { useContext } from "react";
 import styles from "./ChatRoom.module.scss";
-import { useFormik, FormikErrors, Formik } from 'formik';
+import { useFormik, FormikErrors } from "formik";
 import Button from "../Button";
 import { ChatContext } from "../../context/chatContext";
 import { socket } from "../../socket/socket";
 import ChatWindow from "../ChatWindow";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../falibrary';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../assets/falibrary";
 
 interface Ivalues {
   message: string;
 }
 
-interface IProps {
-}
+interface IProps {}
 
 const validate = (values: Ivalues) => {
-  let errors: FormikErrors<Ivalues> = { };
-  if (!values.message) errors.message = "Required" 
-  return errors
+  let errors: FormikErrors<Ivalues> = {};
+  if (!values.message) errors.message = "Required";
+  return errors;
 };
 
 const ChatRoom: React.FC<IProps> = () => {
-
   const context = useContext(ChatContext);
   const { name, setContext, chatMessages } = context;
+  console.log("hi from chatroom", chatMessages);
 
   const sendMessage = (text: string) => {
-    const request = { "action": "onMessage", "message": { name, message: text } };
-    console.log('sending', request)
+    const request = { action: "onMessage", message: { name, message: text } };
+    console.log("sending", request);
     socket.send(JSON.stringify(request));
-  }
+  };
 
   const formik = useFormik({
     initialValues: {
       message: "",
     },
     validate,
-    onSubmit: values => {
+    onSubmit: (values) => {
       sendMessage(values.message);
       formik.resetForm();
-    }
+    },
   });
 
   return (
     <section className={styles.ChatRoom}>
       <div className={styles.chatNav}>
-        <span onClick={() => setContext({...context, name: ''})} className={styles.backButton}>
-          <FontAwesomeIcon icon={['fas', 'sign-out-alt']} />
+        <span
+          onClick={() => setContext({ ...context, name: "" })}
+          className={styles.backButton}
+        >
+          <FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
         </span>
         <h3>{name}</h3>
       </div>
-      <ChatWindow chat={chatMessages}/>
+      <ChatWindow chat={chatMessages} />
       <form>
-        <input name="message" value={formik.values.message} onChange={formik.handleChange} />
+        <input
+          name="message"
+          value={formik.values.message}
+          onChange={formik.handleChange}
+        />
         <Button logic={formik.handleSubmit} text="Send" />
-        {formik.errors.message ? <div className={styles.formErrors}>{formik.errors.message}</div> : ''}
+        {formik.errors.message ? (
+          <div className={styles.formErrors}>{formik.errors.message}</div>
+        ) : (
+          ""
+        )}
       </form>
-      
     </section>
   );
 };

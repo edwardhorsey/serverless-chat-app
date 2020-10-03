@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import styles from "./ConnectedStatus.module.scss";
-import { ChatContext, Ichat } from "../../context/chatContext";
+import { ChatContext } from "../../context/chatContext";
 
-interface IProps {
-}
+interface IProps {}
 
 const ConnectedStatus: React.FC<IProps> = () => {
   const context = useContext(ChatContext);

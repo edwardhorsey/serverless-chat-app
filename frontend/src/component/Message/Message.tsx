@@ -2,17 +2,28 @@ import React from "react";
 import styles from "./Message.module.scss";
 
 interface IProps {
-  name: string,
-  message: string,
-  yourself: boolean
+  name: string;
+  message: string;
+  yourself: boolean;
+  type: string;
 }
 
-const Message: React.FC<IProps> = ({name, message, yourself}) => {
-  const styling = yourself ? `${styles.Message} ${styles.yourself}` : styles.Message;
+const Message: React.FC<IProps> = ({ name, message, yourself, type }) => {
+  const styling = () => {
+    let style = styles.Message;
+    if (yourself) {
+      style = `${style} ${styles.yourself}`;
+    }
+    if (type === "service") {
+      style = `${style} ${styles.service}`;
+    }
+    return style;
+  };
+  const style = styling();
   return (
-    <div className={styling}>
+    <div className={style}>
       <p>
-        <span className={styles.name}>{name}: </span>
+        {name ? <span className={styles.name}>{name}: </span> : ""}
         <span>{message}</span>
       </p>
     </div>
