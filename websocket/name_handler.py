@@ -6,19 +6,29 @@ dynamodb = boto3.client('dynamodb')
 
 
 def handle(event, context):
+
+    uid = event['requestContext']['connectionId']
+    old_item = dynamodb.get_item(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME'], Key={'connectionId': {'S': uid}})
+    old_name = old_item['Item']['name']['S']
+    
     new_name = json.loads(event['body'])['name']
+    new_item={'connectionId': {'S': uid}, 'name': {'S': new_name}}
+    
+    dynamodb.put_item(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME'], Item=new_item)
+    service_message = f'{old_name} changed their name to {new_name}' if old_name else f'{new_name} has joined the chat'
+
     response = {
         'action': 'onName',
         'message': {
             'message-type': 'service',
             'message': {
                 'name': '',
-                'message': f'{new_name} has joined the chat'
+                'message': service_message
             }
         }
     }
-    paginator = dynamodb.get_paginator('scan')
     
+    paginator = dynamodb.get_paginator('scan')
     connectionIds = []
 
     apigatewaymanagementapi = boto3.client('apigatewaymanagementapi', 
@@ -27,6 +37,8 @@ def handle(event, context):
     # Retrieve all connectionIds from the database
     for page in paginator.paginate(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME']):
         connectionIds.extend(page['Items'])
+
+    response['onlineUsers'] = connectionIds
 
     # Emit the recieved message to all the connected devices
     for connectionId in connectionIds:

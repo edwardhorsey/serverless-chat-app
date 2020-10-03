@@ -1,6 +1,7 @@
 @import "../../variables.module.scss";
 
 .ChatRoom {
+  border-radius: 5px;
   box-shadow: 1px 1px 1px $primaryblack;
   background-color: $darkgreytransparent;
   width: 100%;
@@ -10,6 +11,7 @@
     padding: 10px;
     border: 2px solid $greygreenborder;
     outline: none;
+    border-radius: 5px;
     width: 50%;
     font-size: 1.1em;
     margin-bottom: 15px;

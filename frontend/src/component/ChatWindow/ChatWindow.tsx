@@ -8,6 +8,7 @@ interface IProps {
 }
 
 const ChatWindow: React.FC<IProps> = ({ chat }) => {
+  console.log("hi from Chatwindow");
   return (
     <section className={styles.ChatWindow}>
       {chat.map((item, index) => (
