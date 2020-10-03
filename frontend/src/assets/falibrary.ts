@@ -4,6 +4,13 @@ import {
   faCoffee,
   faBackward,
   faSignOutAlt,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default library.add(faCheckSquare, faCoffee, faBackward, faSignOutAlt);
+export default library.add(
+  faCheckSquare,
+  faCoffee,
+  faBackward,
+  faSignOutAlt,
+  faUsers
+);

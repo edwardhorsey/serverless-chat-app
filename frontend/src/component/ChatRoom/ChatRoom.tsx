@@ -7,6 +7,7 @@ import { socket } from "../../socket/socket";
 import ChatWindow from "../ChatWindow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/falibrary";
+import ConnectedUsers from "../ConnectedUsers";
 
 interface Ivalues {
   message: string;
@@ -51,6 +52,9 @@ const ChatRoom: React.FC<IProps> = () => {
         >
           <FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
         </span>
+        <span className={styles.community}>
+          <FontAwesomeIcon icon={["fas", "users"]} />
+        </span>
         <h3>{name}</h3>
       </div>
       <ChatWindow chat={chatMessages} />
@@ -67,6 +71,7 @@ const ChatRoom: React.FC<IProps> = () => {
           ""
         )}
       </form>
+      <ConnectedUsers />
     </section>
   );
 };

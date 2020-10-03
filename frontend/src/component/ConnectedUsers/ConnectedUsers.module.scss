@@ -1,0 +1,11 @@
+@import "../../variables.module.scss";
+
+.ConnectedUsers {
+  border: 2px solid $greygreenborder;
+  background-color: $darkgreytransparent;
+  padding: 5px 15px 5px 15px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-between;
+  box-shadow: 1px 1px 1px $primaryblack;
+}
