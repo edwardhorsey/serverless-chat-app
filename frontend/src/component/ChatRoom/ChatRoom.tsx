@@ -8,6 +8,7 @@ import ChatWindow from "../ChatWindow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/falibrary";
 import ConnectedUsers from "../ConnectedUsers";
+import ChatNav from "../ChatNav";
 
 interface Ivalues {
   message: string;
@@ -45,7 +46,7 @@ const ChatRoom: React.FC<IProps> = () => {
 
   return (
     <section className={styles.ChatRoom}>
-      <div className={styles.chatNav}>
+      {/* <div className={styles.chatNav}>
         <span
           onClick={() => setContext({ ...context, name: "" })}
           className={styles.backButton}
@@ -55,9 +56,11 @@ const ChatRoom: React.FC<IProps> = () => {
         <span className={styles.community}>
           <FontAwesomeIcon icon={["fas", "users"]} />
           {connected.length}
+          <ConnectedUsers />
         </span>
         <h3>{name}</h3>
-      </div>
+      </div> */}
+      <ChatNav />
       <ChatWindow chat={chatMessages} />
       <form>
         <input
@@ -72,7 +75,6 @@ const ChatRoom: React.FC<IProps> = () => {
           ""
         )}
       </form>
-      <ConnectedUsers />
     </section>
   );
 };

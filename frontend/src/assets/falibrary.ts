@@ -5,6 +5,7 @@ import {
   faBackward,
   faSignOutAlt,
   faUsers,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default library.add(
@@ -12,5 +13,6 @@ export default library.add(
   faCoffee,
   faBackward,
   faSignOutAlt,
-  faUsers
+  faUsers,
+  faUser
 );

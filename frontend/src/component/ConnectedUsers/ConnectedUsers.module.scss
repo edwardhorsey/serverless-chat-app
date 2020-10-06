@@ -1,11 +1,25 @@
 @import "../../variables.module.scss";
 
 .ConnectedUsers {
-  border: 2px solid $greygreenborder;
-  background-color: $darkgreytransparent;
-  padding: 5px 15px 5px 15px;
-  display: flex;
-  border-radius: 5px;
-  justify-content: space-between;
   box-shadow: 1px 1px 1px $primaryblack;
+  border: 2px solid $greygreenborder;
+  border-radius: 5px;
+  position: absolute;
+  left: 41%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px 5px 15px;
+  font-size: 1rem;
+  background-color: $lightgreynottransparent;
+  span {
+    display: flex;
+    justify-content: flex-end;
+    p {
+      padding: 0px;
+      margin: 0 0 0 5px;
+    }
+    svg {
+      color: $greygreenborder;
+    }
+  }
 }

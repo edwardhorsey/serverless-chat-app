@@ -11,15 +11,17 @@ const ChatWindow: React.FC<IProps> = ({ chat }) => {
   console.log("hi from Chatwindow");
   return (
     <section className={styles.ChatWindow}>
-      {chat.map((item, index) => (
-        <Message
-          type={item["message-type"]}
-          key={index}
-          yourself={true}
-          name={item["message"]["name"]}
-          message={item["message"]["message"]}
-        />
-      ))}
+      <div className={styles.ChatWindowWrapper}>
+        {chat.map((item, index) => (
+          <Message
+            type={item["message-type"]}
+            key={index}
+            yourself={true}
+            name={item["message"]["name"]}
+            message={item["message"]["message"]}
+          />
+        ))}
+      </div>
     </section>
   );
 };

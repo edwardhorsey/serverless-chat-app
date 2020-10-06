@@ -15,11 +15,18 @@
     max-width: 350px;
     margin: 0 auto;
     padding: 30px;
-    input, button {
+    label {
+      display: none;
+    }
+    input,
+    button {
       background-color: $primaryyellow;
       padding: 10px;
       border: 2px solid $greygreenborder;
       outline: none;
+    }
+    input {
+      font-size: 1.2em;
     }
   }
   .formErrors {

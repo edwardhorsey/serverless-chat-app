@@ -29,7 +29,9 @@ const SetName: React.FC<IProps> = (props) => {
   return (
     <section className={styles.SetName}>
       <form>
-        <label htmlFor="name">What's your name?</label>
+        <label htmlFor="name">
+          <h2>What's your name?</h2>
+        </label>
         <input
           name="name"
           placeholder="Your name"
