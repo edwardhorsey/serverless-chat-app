@@ -70,10 +70,9 @@ export const ChatProvider = (props: iProps) => {
     if (response["action"] === "onMessage") {
       const chatMessages = [...state.chatMessages, response.message];
       setContext({ ...state, chatMessages });
-    } else if (response["action"] === "onName") {
+    } else if (["onName", "disconnected"].includes(response["action"])) {
       const chatMessages = [...state.chatMessages, response.message];
-      const connected = response.onlineUsers;
-      console.log(connected);
+      const connected = response.onlineUsers.filter((el: string) => el);
       setContext({ ...state, chatMessages, connected });
     }
   };

@@ -23,7 +23,7 @@ const validate = (values: Ivalues) => {
 
 const ChatRoom: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
-  const { name, setContext, chatMessages } = context;
+  const { name, setContext, chatMessages, connected } = context;
   console.log("hi from chatroom", chatMessages);
 
   const sendMessage = (text: string) => {
@@ -54,6 +54,7 @@ const ChatRoom: React.FC<IProps> = () => {
         </span>
         <span className={styles.community}>
           <FontAwesomeIcon icon={["fas", "users"]} />
+          {connected.length}
         </span>
         <h3>{name}</h3>
       </div>

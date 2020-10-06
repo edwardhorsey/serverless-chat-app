@@ -9,9 +9,9 @@ const ConnectedUsers: React.FC<IProps> = () => {
   const { connected } = context;
   return (
     <section className={styles.ConnectedUsers}>
-      {connected.map((user, index) => (
-        <p key={index}>{user.name["S"]}</p>
-      ))}
+      {/* {connected.map((user, index) => ( */}
+      {/* // <p key={index}>{user.name}</p> */}
+      {/* ))} */}
     </section>
   );
 };
