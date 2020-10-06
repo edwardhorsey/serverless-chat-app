@@ -22,10 +22,16 @@ export interface Ichat {
   message: Imessage;
 }
 
+export interface Iconnected {
+  connectionId: string;
+  name: string;
+}
+
 interface Icontext {
   name: string;
   chatMessages: Ichat[];
   status: string;
+  connected: Iconnected[];
   setContext: Dispatch<SetStateAction<Icontext>>;
 }
 
@@ -34,6 +40,7 @@ const initialState: Icontext = {
   chatMessages: [],
   status: "disconnected",
   setContext: () => {},
+  connected: [],
 };
 
 export const ChatContext = createContext<Icontext>(initialState);
@@ -63,9 +70,10 @@ export const ChatProvider = (props: iProps) => {
     if (response["action"] === "onMessage") {
       const chatMessages = [...state.chatMessages, response.message];
       setContext({ ...state, chatMessages });
-    } else if (response["action"] === "onName") {
+    } else if (["onName", "disconnected"].includes(response["action"])) {
       const chatMessages = [...state.chatMessages, response.message];
-      setContext({ ...state, chatMessages });
+      const connected = response.onlineUsers.filter((el: string) => el);
+      setContext({ ...state, chatMessages, connected });
     }
   };
 

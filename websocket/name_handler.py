@@ -38,7 +38,7 @@ def handle(event, context):
     for page in paginator.paginate(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME']):
         connectionIds.extend(page['Items'])
 
-    response['onlineUsers'] = connectionIds
+    response['onlineUsers'] = [conn['name']['S'] for conn in connectionIds]
 
     # Emit the recieved message to all the connected devices
     for connectionId in connectionIds:

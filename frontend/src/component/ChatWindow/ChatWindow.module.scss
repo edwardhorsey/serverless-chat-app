@@ -8,7 +8,13 @@
   overflow-y: scroll;
   margin: 0 10px 10px 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   border-radius: 5px;
   text-align: right;
+  max-height: 450px;
+  .ChatWindowWrapper {
+    // overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
 }

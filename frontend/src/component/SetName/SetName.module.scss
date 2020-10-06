@@ -5,21 +5,29 @@
   background-color: $darkgreytransparent;
   border-radius: 20px;
   box-shadow: 1px 1px 1px $primaryblack;
-  padding: 10px 0px 20px 0px;
-  margin-bottom: 10px;
+  padding: 10px 0px 10px 0px;
   form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 400px;
     max-width: 350px;
     margin: 0 auto;
     padding: 30px;
-    input, button {
-      background-color: $primaryyellow;
+    label h2 {
+      margin: 0px;
+      padding: 5px;
+    }
+    input,
+    button {
+      // background-color: $primaryyellow;
+      border-radius: 5px;
       padding: 10px;
       border: 2px solid $greygreenborder;
       outline: none;
+    }
+    input {
+      font-size: 1.2em;
     }
   }
   .formErrors {

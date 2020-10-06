@@ -1,0 +1,25 @@
+@import "../../variables.module.scss";
+
+.chatNav {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px 0 20px;
+  height: 50px;
+  h3 {
+    width: 33%;
+    text-align: right;
+    margin: auto 0;
+  }
+  .backButton {
+    margin: auto 0;
+    font-size: 1.5em;
+    transform: rotateY(180deg);
+    width: 33%;
+    text-align: right;
+  }
+  .community {
+    margin: auto 0;
+    font-size: 1.5em;
+    width: 33%;
+  }
+}

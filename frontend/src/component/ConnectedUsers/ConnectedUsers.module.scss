@@ -1,0 +1,25 @@
+@import "../../variables.module.scss";
+
+.ConnectedUsers {
+  box-shadow: 1px 1px 1px $primaryblack;
+  border: 2px solid $greygreenborder;
+  border-radius: 5px;
+  position: absolute;
+  left: 41%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px 5px 15px;
+  font-size: 1rem;
+  background-color: $lightgreynottransparent;
+  span {
+    display: flex;
+    justify-content: flex-end;
+    p {
+      padding: 0px;
+      margin: 0 0 0 5px;
+    }
+    svg {
+      color: $greygreenborder;
+    }
+  }
+}

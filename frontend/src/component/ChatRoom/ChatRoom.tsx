@@ -5,8 +5,8 @@ import Button from "../Button";
 import { ChatContext } from "../../context/chatContext";
 import { socket } from "../../socket/socket";
 import ChatWindow from "../ChatWindow";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/falibrary";
+import ChatNav from "../ChatNav";
 
 interface Ivalues {
   message: string;
@@ -22,7 +22,7 @@ const validate = (values: Ivalues) => {
 
 const ChatRoom: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
-  const { name, setContext, chatMessages } = context;
+  const { name, chatMessages } = context;
   console.log("hi from chatroom", chatMessages);
 
   const sendMessage = (text: string) => {
@@ -44,15 +44,21 @@ const ChatRoom: React.FC<IProps> = () => {
 
   return (
     <section className={styles.ChatRoom}>
-      <div className={styles.chatNav}>
+      {/* <div className={styles.chatNav}>
         <span
           onClick={() => setContext({ ...context, name: "" })}
           className={styles.backButton}
         >
           <FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
         </span>
+        <span className={styles.community}>
+          <FontAwesomeIcon icon={["fas", "users"]} />
+          {connected.length}
+          <ConnectedUsers />
+        </span>
         <h3>{name}</h3>
-      </div>
+      </div> */}
+      <ChatNav />
       <ChatWindow chat={chatMessages} />
       <form>
         <input
