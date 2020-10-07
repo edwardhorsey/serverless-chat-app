@@ -16,14 +16,14 @@ interface IProps {}
 
 const validate = (values: Ivalues) => {
   let errors: FormikErrors<Ivalues> = {};
-  if (!values.message) errors.message = "Required";
+  if (!values.message) errors.message = "";
   return errors;
 };
 
 const ChatRoom: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
   const { name, chatMessages } = context;
-  console.log("hi from chatroom", chatMessages);
+  console.log("hi from chatroom");
 
   const sendMessage = (text: string) => {
     const request = { action: "onMessage", message: { name, message: text } };
@@ -44,20 +44,6 @@ const ChatRoom: React.FC<IProps> = () => {
 
   return (
     <section className={styles.ChatRoom}>
-      {/* <div className={styles.chatNav}>
-        <span
-          onClick={() => setContext({ ...context, name: "" })}
-          className={styles.backButton}
-        >
-          <FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
-        </span>
-        <span className={styles.community}>
-          <FontAwesomeIcon icon={["fas", "users"]} />
-          {connected.length}
-          <ConnectedUsers />
-        </span>
-        <h3>{name}</h3>
-      </div> */}
       <ChatNav />
       <ChatWindow chat={chatMessages} />
       <form>
@@ -67,11 +53,6 @@ const ChatRoom: React.FC<IProps> = () => {
           onChange={formik.handleChange}
         />
         <Button logic={formik.handleSubmit} text="Send" />
-        {formik.errors.message ? (
-          <div className={styles.formErrors}>{formik.errors.message}</div>
-        ) : (
-          ""
-        )}
       </form>
     </section>
   );

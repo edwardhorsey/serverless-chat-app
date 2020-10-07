@@ -6,14 +6,14 @@
   padding: 10px;
   min-height: 400px;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin: 0 10px 10px 10px;
   display: flex;
   flex-direction: column-reverse;
   border-radius: 5px;
-  text-align: right;
+  text-align: left;
   max-height: 450px;
   .ChatWindowWrapper {
-    // overflow: auto;
     display: flex;
     flex-direction: column;
   }

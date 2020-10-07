@@ -13,7 +13,8 @@ interface IProps {
 
 const validate = (values: Ivalues) => {
   let errors: FormikErrors<Ivalues> = {};
-  if (!values.name) errors.name = "Required";
+  if (!values.name) errors.name = "*Required";
+  if (values.name.length > 24) errors.name = "*Too many chars";
   return errors;
 };
 
@@ -37,12 +38,12 @@ const SetName: React.FC<IProps> = (props) => {
           placeholder="Your name"
           onChange={formik.handleChange}
         />
-        <Button logic={formik.handleSubmit} text="Join chat" />
-        {formik.errors.name ? (
-          <div className={styles.formErrors}>{formik.errors.name}</div>
-        ) : (
-          ""
-        )}
+        <div>
+          <Button logic={formik.handleSubmit} text="Join chat" />
+          {formik.errors.name && (
+            <div className={styles.formErrors}>{formik.errors.name}</div>
+          )}
+        </div>
       </form>
     </section>
   );

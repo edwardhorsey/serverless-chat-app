@@ -1,18 +1,22 @@
 @import "../../variables.module.scss";
 
 .Message {
-  font-size: 0.9rem;
+  font-size: 0.925rem;
   display: flex;
   justify-content: flex-end;
   p {
     background-color: $lightgrey;
     border-radius: 5px;
-    width: fit-content;
     padding: 5px;
     margin: 5px;
+    max-width: 350px;
     .name {
       font-weight: 600;
       color: $secondaryblack;
+      display: block;
+    }
+    .messageContent {
+      word-break: break-word;
     }
   }
 }
@@ -23,6 +27,6 @@
 
 .service {
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   margin: 0 auto;
 }
