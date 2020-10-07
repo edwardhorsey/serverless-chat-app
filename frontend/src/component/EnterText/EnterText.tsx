@@ -20,7 +20,6 @@ const validate = (values: Ivalues) => {
 const EnterText: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
   const { name } = context;
-  console.log("hi from EnterText");
 
   const sendMessage = (text: string) => {
     const request = { action: "onMessage", message: { name, message: text } };
