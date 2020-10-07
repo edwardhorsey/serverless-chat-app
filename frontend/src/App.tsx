@@ -12,7 +12,6 @@ const App = () => {
 
   const updateName = (name: string) => {
     const request = { action: "onName", name };
-    console.log("updateName", request);
     socket.send(JSON.stringify(request));
   };
   const setName = (name: string) => {

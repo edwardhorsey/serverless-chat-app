@@ -1,0 +1,14 @@
+@import "../../variables.module.scss";
+
+.EnterText {
+  input {
+    background-color: $primaryyellow;
+    padding: 10px;
+    border: 2px solid $greygreenborder;
+    outline: none;
+    border-radius: 5px;
+    width: 50%;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+}

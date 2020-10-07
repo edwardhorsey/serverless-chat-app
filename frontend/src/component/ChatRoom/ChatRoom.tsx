@@ -1,59 +1,22 @@
 import React, { useContext } from "react";
 import styles from "./ChatRoom.module.scss";
-import { useFormik, FormikErrors } from "formik";
-import Button from "../Button";
 import { ChatContext } from "../../context/chatContext";
-import { socket } from "../../socket/socket";
 import ChatWindow from "../ChatWindow";
-import "../../assets/falibrary";
 import ChatNav from "../ChatNav";
-
-interface Ivalues {
-  message: string;
-}
+import EnterText from "../EnterText";
 
 interface IProps {}
 
-const validate = (values: Ivalues) => {
-  let errors: FormikErrors<Ivalues> = {};
-  if (!values.message) errors.message = "";
-  return errors;
-};
-
 const ChatRoom: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
-  const { name, chatMessages } = context;
+  const { chatMessages } = context;
   console.log("hi from chatroom");
-
-  const sendMessage = (text: string) => {
-    const request = { action: "onMessage", message: { name, message: text } };
-    console.log("sending", request);
-    socket.send(JSON.stringify(request));
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      message: "",
-    },
-    validate,
-    onSubmit: (values) => {
-      sendMessage(values.message);
-      formik.resetForm();
-    },
-  });
 
   return (
     <section className={styles.ChatRoom}>
       <ChatNav />
       <ChatWindow chat={chatMessages} />
-      <form>
-        <input
-          name="message"
-          value={formik.values.message}
-          onChange={formik.handleChange}
-        />
-        <Button logic={formik.handleSubmit} text="Send" />
-      </form>
+      <EnterText />
     </section>
   );
 };
