@@ -4,7 +4,6 @@
   border: 3px solid $marroonborder;
   background-image: url(../../assets/img/background.jpg);
   padding: 10px;
-  min-height: 400px;
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 0 10px 10px 10px;
@@ -12,7 +11,7 @@
   flex-direction: column-reverse;
   border-radius: 5px;
   text-align: left;
-  max-height: 450px;
+  height: 420px;
   .ChatWindowWrapper {
     display: flex;
     flex-direction: column;

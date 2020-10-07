@@ -16,7 +16,7 @@ const ChatWindow: React.FC<IProps> = ({ chat }) => {
           <Message
             type={item["message-type"]}
             key={index}
-            yourself={true}
+            yourself={item["yourself"]}
             name={item["message"]["name"]}
             message={item["message"]["message"]}
           />

@@ -2,7 +2,7 @@
 
 .ChatRoom {
   border-radius: 5px;
-  box-shadow: 1px 1px 1px $primaryblack;
+  box-shadow: $regularboxshadow;
   background-color: $darkgreytransparent;
   width: 100%;
   margin-bottom: 10px;

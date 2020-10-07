@@ -1,10 +1,9 @@
 @import "../../variables.module.scss";
 
 .SetName {
-  border: 2px solid $greygreenborder;
   background-color: $darkgreytransparent;
   border-radius: 20px;
-  box-shadow: 1px 1px 1px $primaryblack;
+  box-shadow: $regularboxshadow;
   padding: 10px 0px 10px 0px;
   margin-bottom: 10px;
   form {

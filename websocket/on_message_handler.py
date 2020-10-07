@@ -6,14 +6,9 @@ dynamodb = boto3.client('dynamodb')
 
 
 def handle(event, context):
+    uid = event['requestContext']['connectionId']
     message = json.loads(event['body'])['message']
-    response = {
-        'action': 'onMessage',
-        'message': {
-            'message-type': 'chat',
-            'message': message
-        }
-    }
+    msg_sender = message['name']
     paginator = dynamodb.get_paginator('scan')
     
     connectionIds = []
@@ -25,11 +20,21 @@ def handle(event, context):
     for page in paginator.paginate(TableName=os.environ['SOCKET_CONNECTIONS_TABLE_NAME']):
         connectionIds.extend(page['Items'])
 
+    response = {
+        'action': 'onMessage',
+        'message': {
+            'message-type': 'chat',
+            'yourself': False,
+            'message': message
+        }
+    }
     # Emit the recieved message to all the connected devices
     for connectionId in connectionIds:
-        apigatewaymanagementapi.post_to_connection(
-            Data=json.dumps(response),
-            ConnectionId=connectionId['connectionId']['S']
-        )
+        if connectionId['name']['S']:
+            response['message']['yourself'] = True if uid == connectionId['connectionId']['S'] else False
+            apigatewaymanagementapi.post_to_connection(
+                Data=json.dumps(response),
+                ConnectionId=connectionId['connectionId']['S']
+            )
 
     return {}

@@ -42,9 +42,10 @@ def handle(event, context):
 
     # Emit the recieved message to all the connected devices
     for connectionId in connectionIds:
-        apigatewaymanagementapi.post_to_connection(
-            Data=json.dumps(response),
-            ConnectionId=connectionId['connectionId']['S']
+        if connectionId['name']['S']:
+            apigatewaymanagementapi.post_to_connection(
+                Data=json.dumps(response),
+                ConnectionId=connectionId['connectionId']['S']
         )
 
     return {}

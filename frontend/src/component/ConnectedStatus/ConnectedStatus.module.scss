@@ -1,13 +1,13 @@
 @import "../../variables.module.scss";
 
 .ConnectedStatus {
-  border: 2px solid $greygreenborder;
+  // border: 2px solid $greygreenborder;
   background-color: $darkgreytransparent;
   padding: 5px 15px 5px 15px;
   display: flex;
   border-radius: 5px;
   justify-content: space-between;
-  box-shadow: 1px 1px 1px $primaryblack;
+  box-shadow: $regularboxshadow;
   height: 40px;
   p {
     margin: auto 0;
