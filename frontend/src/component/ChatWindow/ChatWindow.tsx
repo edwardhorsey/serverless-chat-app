@@ -12,21 +12,16 @@ interface IProps {
 const ChatWindow: React.FC<IProps> = ({ chat }) => {
   console.log("hi from Chatwindow");
   const AnimatedMessage = animated(Message);
-  const [chatMessages, setChatMessages] = useState(chat);
-  console.log(chat, chatMessages);
-  useEffect(() => {
-    setChatMessages(chat);
-  });
   return (
     <section className={styles.ChatWindow}>
       <div className={styles.ChatWindowWrapper}>
         <Transition
-          native
-          items={chatMessages}
-          keys={(msg) => chatMessages.indexOf(msg)}
-          from={{ opacity: 0, height: 0 }}
-          enter={{ opactiy: 1, height: "auto" }}
-          update={{ opactiy: 1, height: 20 }}
+          config={{ mass: 5, tension: 500, friction: 100 }}
+          items={chat}
+          keys={(msg) => chat.indexOf(msg)}
+          from={{ height: 0, opacity: 0 }}
+          enter={{ height: "auto", opacity: 1 }}
+          leave={{ height: 0, opacity: 0 }}
         >
           {(item) => (props) => (
             <AnimatedMessage

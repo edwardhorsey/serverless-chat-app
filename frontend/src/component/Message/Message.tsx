@@ -6,7 +6,7 @@ interface IProps {
   message: string;
   yourself: boolean;
   type: string;
-  style?: { opacity: number; height: string };
+  style?: { opacity: number; height?: string | number };
 }
 
 const Message: React.FC<IProps> = ({ name, message, yourself, type }) => {
