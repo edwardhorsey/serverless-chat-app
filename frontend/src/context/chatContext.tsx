@@ -20,6 +20,7 @@ export interface Ichat {
   action: string;
   "message-type": string;
   message: Imessage;
+  yourself: boolean;
 }
 
 export interface Iconnected {

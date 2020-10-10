@@ -1,36 +1,44 @@
 @import "../../variables.module.scss";
 
 .SetName {
-  border: 2px solid $greygreenborder;
   background-color: $darkgreytransparent;
   border-radius: 20px;
-  box-shadow: 1px 1px 1px $primaryblack;
+  box-shadow: $regularboxshadow;
   padding: 10px 0px 10px 0px;
+  margin-bottom: 10px;
   form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 400px;
-    max-width: 350px;
+    width: 350px;
     margin: 0 auto;
     padding: 30px;
     label h2 {
       margin: 0px;
       padding: 5px;
     }
-    input,
-    button {
-      // background-color: $primaryyellow;
-      border-radius: 5px;
-      padding: 10px;
-      border: 2px solid $greygreenborder;
-      outline: none;
-    }
     input {
       font-size: 1.2em;
+      background-color: $altlightgreytransparent;
+      border: none;
+      text-align: center;
+      border-radius: 5px;
+      padding: 15px 10px 15px 10px;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+    div {
+      position: relative;
+      width: fit-content;
+      margin: 0 auto;
     }
   }
   .formErrors {
+    width: 100%;
+    position: absolute;
     font-size: 0.8rem;
     color: darkred;
     text-align: center;
