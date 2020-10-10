@@ -10,5 +10,6 @@
   min-width: 80px;
   &:hover {
     background-color: $lightgreytransparent;
+    transition: 0.25s;
   }
 }

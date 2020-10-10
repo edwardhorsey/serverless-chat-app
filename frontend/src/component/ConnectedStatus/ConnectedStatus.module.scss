@@ -3,12 +3,12 @@
 .ConnectedStatus {
   // border: 2px solid $greygreenborder;
   background-color: $darkgreytransparent;
-  padding: 5px 15px 5px 15px;
+  padding: 0 15px;
   display: flex;
   border-radius: 5px;
   justify-content: space-between;
   box-shadow: $regularboxshadow;
-  height: 40px;
+  height: 45px;
   p {
     margin: auto 0;
   }
