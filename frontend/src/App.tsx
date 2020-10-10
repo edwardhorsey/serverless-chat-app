@@ -10,11 +10,9 @@ const App = () => {
   const context = useContext(ChatContext);
   const { name, setContext } = context;
 
-  const updateName = (name: string) => {
-    const request = { action: "onName", name };
-    console.log("updateName", request);
-    socket.send(JSON.stringify(request));
-  };
+  const updateName = (name: string) =>
+    socket.send(JSON.stringify({ action: "onName", name }));
+
   const setName = (name: string) => {
     setContext({ ...context, name });
     updateName(name);

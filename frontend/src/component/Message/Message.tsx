@@ -6,6 +6,7 @@ interface IProps {
   message: string;
   yourself: boolean;
   type: string;
+  style?: { opacity: number; height?: string | number };
 }
 
 const Message: React.FC<IProps> = ({ name, message, yourself, type }) => {
@@ -23,8 +24,8 @@ const Message: React.FC<IProps> = ({ name, message, yourself, type }) => {
   return (
     <div className={style}>
       <p>
-        {name ? <span className={styles.name}>{name}: </span> : ""}
-        <span>{message}</span>
+        {name && <span className={styles.name}>{name.trim()}: </span>}
+        <span className={styles.messageContent}>{message}</span>
       </p>
     </div>
   );

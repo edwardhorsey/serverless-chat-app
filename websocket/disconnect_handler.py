@@ -37,9 +37,10 @@ def handle(event, context):
     response['onlineUsers'] = [conn['name']['S'] for conn in connectionIds]
 
     for connectionId in connectionIds:
-        apigatewaymanagementapi.post_to_connection(
-            Data=json.dumps(response),
-            ConnectionId=connectionId['connectionId']['S']
-        )
+        if connectionId['name']['S']:
+            apigatewaymanagementapi.post_to_connection(
+                Data=json.dumps(response),
+                ConnectionId=connectionId['connectionId']['S']
+            )
 
     return {}
