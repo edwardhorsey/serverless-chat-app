@@ -5,10 +5,11 @@ import ChatRoom from "./component/ChatRoom";
 import { ChatContext } from "./context/chatContext";
 import { socket } from "./socket/socket";
 import ConnectedStatus from "./component/ConnectedStatus";
+import SpringTest from "./component/SpringTest";
 
 const App = () => {
   const context = useContext(ChatContext);
-  const { name, setContext } = context;
+  const { name, setContext, chatMessages } = context;
 
   const updateName = (name: string) => {
     const request = { action: "onName", name };
@@ -23,6 +24,7 @@ const App = () => {
     <main className={styles.App}>
       {!name ? <SetName setName={setName} /> : <ChatRoom />}
       <ConnectedStatus />
+      <SpringTest />
     </main>
   );
 };
