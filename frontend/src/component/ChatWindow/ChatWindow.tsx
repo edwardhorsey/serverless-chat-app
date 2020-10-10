@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./ChatWindow.module.scss";
 import { Ichat } from "../../context/chatContext";
 import Message from "../Message";
-import { useTransition, animated } from "react-spring";
+import { animated } from "react-spring";
 import { Transition } from "react-spring/renderprops";
 
 interface IProps {
@@ -10,13 +10,11 @@ interface IProps {
 }
 
 const ChatWindow: React.FC<IProps> = ({ chat }) => {
-  console.log("hi from Chatwindow");
-  const AnimatedMessage = animated(Message);
   return (
     <section className={styles.ChatWindow}>
       <div className={styles.ChatWindowWrapper}>
         <Transition
-          config={{ mass: 5, tension: 500, friction: 100 }}
+          config={{ mass: 5, tension: 10000, friction: 600 }}
           items={chat}
           keys={(msg) => chat.indexOf(msg)}
           from={{ height: 0, opacity: 0 }}
@@ -24,24 +22,16 @@ const ChatWindow: React.FC<IProps> = ({ chat }) => {
           leave={{ height: 0, opacity: 0 }}
         >
           {(item) => (props) => (
-            <AnimatedMessage
-              style={props}
-              type={item["message-type"]}
-              yourself={item["yourself"]}
-              name={item["message"]["name"]}
-              message={item["message"]["message"]}
-            />
+            <animated.article style={props}>
+              <Message
+                type={item["message-type"]}
+                yourself={item["yourself"]}
+                name={item["message"]["name"]}
+                message={item["message"]["message"]}
+              />
+            </animated.article>
           )}
         </Transition>
-        {/* {chat.map((item, index) => (
-          <Message
-            key={index}
-            type={item["message-type"]}
-            yourself={item["yourself"]}
-            name={item["message"]["name"]}
-            message={item["message"]["message"]}
-          />
-        ))} */}
       </div>
     </section>
   );
