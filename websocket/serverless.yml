@@ -1,4 +1,6 @@
 service: awswebsocketchat
+org: edwardhorsey
+app: serverless-chat-app
 
 custom:
   currentStage: ${opt:stage, self:provider.stage}
@@ -8,7 +10,7 @@ custom:
 provider:
   name: aws
   iamManagedPolicies:
-  - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+    - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
   runtime: ${self:custom.lambdaRunTime}
   versionFunctions: false
   region: eu-west-1
