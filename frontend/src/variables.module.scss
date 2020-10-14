@@ -1,10 +1,11 @@
 // Background colours
-$darkgreytransparent: rgba(59, 53, 63, 0.2);
+$darkgreytransparent: rgba(59, 53, 63, 0.25);
 $lightgreytransparent: rgba(230, 217, 217, 0.7);
 $altlightgreytransparent: rgba(250, 250, 250, 0.7);
 $lightgreynottransparent: rgb(244, 247, 250);
-$primaryblue: rgb(201, 236, 255);
+$primaryblue: rgb(218, 240, 253);
 $primaryyellow: rgba(255, 255, 240, 0.9);
+$primarywhite: rgb(237, 240, 243);
 $lightgrey: rgb(213, 213, 213);
 
 // Borders Shadow Fonts
@@ -15,4 +16,4 @@ $secondaryblack: rgb(43, 43, 43);
 $greygreenborder: rgba(47, 79, 79, 0.8);
 $marroonborder: rgba(109, 41, 41, 0.9);
 
-$regularboxshadow: 1px 1px 3px $primaryblack;
+$regularboxshadow: 1px 1px 5px $primaryblack;

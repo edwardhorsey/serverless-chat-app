@@ -11,12 +11,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 400px;
-    width: 350px;
+    max-width: 350px;
     margin: 0 auto;
     padding: 30px;
     label h2 {
       margin: 0px;
       padding: 5px;
+      width: 100%;
     }
     button {
       border: none;

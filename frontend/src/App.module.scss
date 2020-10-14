@@ -1,10 +1,13 @@
 @import "./variables.module.scss";
+body {
+  background-color: $primarywhite;
+  background-color: $primaryblue;
+}
 
 .App {
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
-  background-color: $primaryblue;
   display: flex;
   justify-content: center;
   flex-direction: column;
