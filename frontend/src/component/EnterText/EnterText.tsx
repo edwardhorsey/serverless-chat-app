@@ -9,21 +9,18 @@ interface Ivalues {
   message: string;
 }
 
-interface IProps {}
-
 const validate = (values: Ivalues) => {
   let errors: FormikErrors<Ivalues> = {};
   if (!values.message) errors.message = "";
   return errors;
 };
 
-const EnterText: React.FC<IProps> = () => {
+const EnterText: React.FC = () => {
   const context = useContext(ChatContext);
   const { name } = context;
 
   const sendMessage = (text: string) => {
     const request = { action: "onMessage", message: { name, message: text } };
-    console.log("sending", request);
     socket.send(JSON.stringify(request));
   };
 

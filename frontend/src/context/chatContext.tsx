@@ -65,8 +65,6 @@ export const ChatProvider = (props: iProps) => {
 
   socket.onmessage = (event) => {
     const response = JSON.parse(event.data);
-    console.log(response);
-
     if (response["action"] === "onMessage") {
       const chatMessages = [...state.chatMessages, response.message];
       setContext({ ...state, chatMessages });

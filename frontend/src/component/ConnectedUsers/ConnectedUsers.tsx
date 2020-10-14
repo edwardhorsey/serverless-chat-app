@@ -4,9 +4,7 @@ import { ChatContext } from "../../context/chatContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/falibrary";
 
-interface IProps {}
-
-const ConnectedUsers: React.FC<IProps> = () => {
+const ConnectedUsers: React.FC = () => {
   const context = useContext(ChatContext);
   const { connected } = context;
   return (

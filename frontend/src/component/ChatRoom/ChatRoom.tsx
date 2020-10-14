@@ -10,8 +10,6 @@ interface IProps {}
 const ChatRoom: React.FC<IProps> = () => {
   const context = useContext(ChatContext);
   const { chatMessages } = context;
-  console.log("hi from chatroom");
-
   return (
     <section className={styles.ChatRoom}>
       <ChatNav />
